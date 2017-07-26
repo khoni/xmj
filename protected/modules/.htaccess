@@ -1,0 +1,11 @@
+Order Allow,Deny 
+Deny from all
+#<Files *> 
+#order Deny,Allow 
+#Deny from all 
+#Allow from env=internal 
+#</Files>
+#RewriteEngine On
+
+#RewriteCond %{REMOTE_HOST} !^pendaftaran\.ums.programmer\.web.id$ [NC]
+#RewriteRule ^ - [F] 
