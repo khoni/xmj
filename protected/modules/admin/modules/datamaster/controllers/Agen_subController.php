@@ -60,13 +60,14 @@ class Agen_subController extends Controller
 					$kantor->alamat_jalan=$user->ktr_alamat_jalan;
 					$kantor->koordinat_maps=$user->koordinat_maps;
 					$kantor->discount=$user->discount;
+					$kantor->awalan_connote=$user->awalan_connote;
 					$kantor->is_aktif=1;
 					$kantor->kantorID="ktr_".Yii::app()->user->uniqidReal();
 					$kantor->updated_at=time();
 					$kantor->updated_by=Yii::app()->user->id;
 					if($kantor->validate()){
 						$agen_sub=new AgenSub;
-						$agen_sub->agen_subID="agsub_".Yii::app()->user->uniqidReal();
+						$agen_sub->agen_subID="sub_".Yii::app()->user->uniqidReal();
 						$agen_sub->cabangID=$user->cabangID;
 						$agen_sub->kantorID=$kantor->kantorID;
 						$agen_sub->updated_at=time();
@@ -122,6 +123,7 @@ class Agen_subController extends Controller
 				$kantor->alamat_jalan=$user->ktr_alamat_jalan;
 				$kantor->koordinat_maps=$user->koordinat_maps;
 				$kantor->discount=$user->discount;
+				$kantor->awalan_connote=$user->awalan_connote;
 				$kantor->is_aktif=1;
 				$kantor->updated_at=time();
 				$kantor->updated_by=Yii::app()->user->id;
@@ -202,7 +204,7 @@ class Agen_subController extends Controller
 			$kantor->updated_by=Yii::app()->user->id;
 			if($kantor->validate()){
 				$agen_sub=new AgenSub;
-				$agen_sub->agen_subID="agsub_".Yii::app()->user->uniqidReal();
+				$agen_sub->agen_subID="sub_".Yii::app()->user->uniqidReal();
 				$agen_sub->kantorID=$kantor->kantorID;
 				$agen_sub->cabangID=$kantor->cabangID;
 				if($agen_sub->validate()){

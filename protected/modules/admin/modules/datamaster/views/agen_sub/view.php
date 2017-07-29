@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs=array(
-	'Cabang'=>array('index'),
+	'Sub Agen'=>array('index'),
 	$model->cabangID,
 );
 

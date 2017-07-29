@@ -6,13 +6,18 @@
  * The followings are the available columns in table 'connote':
  * @property string $connoteID
  * @property string $kantorID
- * @property integer $status
+ * @property string $nomer
+ * @property integer $connote_statusID
+ * @property integer $updated_at
+ * @property string $updated_by
  */
 class Connote extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
+	public $total, $terpakai, $nama_kantor;
+	
 	public function tableName()
 	{
 		return 'connote';
@@ -26,12 +31,13 @@ class Connote extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('connoteID, kantorID', 'required'),
-			array('status', 'numerical', 'integerOnly'=>true),
-			array('connoteID, kantorID', 'length', 'max'=>50),
+			array('connoteID, kantorID, nomer', 'required'),
+			array('connote_statusID, updated_at', 'numerical', 'integerOnly'=>true),
+			array('connoteID, kantorID, updated_by', 'length', 'max'=>50),
+			array('nomer', 'length', 'max'=>13),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('connoteID, kantorID, status', 'safe', 'on'=>'search'),
+			array('connoteID, kantorID, nama_kantor, nomer, connote_statusID, updated_at, updated_by', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -43,6 +49,8 @@ class Connote extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'kantor' => array(self::BELONGS_TO, "Kantor", 'kantorID'),
+			'connoteStatus' => array(self::BELONGS_TO, "ConnoteStatus", 'connote_statusID'),
 		);
 	}
 
@@ -52,9 +60,13 @@ class Connote extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'connoteID' => 'Connote',
+			'connoteID' => 'Connote ID',
 			'kantorID' => 'Kantor',
-			'status' => 'Status',
+			'nomer' => 'Nomer',
+			'connote_statusID' => 'connote_statusID',
+			'total' => 'Total Connote',
+			'updated_at' => 'Updated At',
+			'updated_by' => 'Updated By',
 		);
 	}
 
@@ -70,16 +82,19 @@ class Connote extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
-	{
+	public function search(){
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('connoteID',$this->connoteID,true);
-		$criteria->compare('kantorID',$this->kantorID,true);
-		$criteria->compare('status',$this->status);
-
+		$criteria->compare('connoteID',$this->connoteID);
+		$criteria->compare('kantorID',$this->kantorID);
+		$criteria->compare('nomer',$this->nomer);
+		$criteria->compare('connote_statusID',$this->connote_statusID);
+				
+		$criteria->join=" left join kantor k on t.kantorID=k.kantorID ";
+		$criteria->compare('nama_kantor',$this->nama_kantor);
+		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -95,4 +110,18 @@ class Connote extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	public function connote_cabang(){
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+		$criteria->select=" t.kantorID,COUNT(*) AS total,COUNT(CASE WHEN `connote_statusID`=1 THEN `connote_statusID` END) AS terpakai ";
+		$criteria->group=" kantorID asc";		
+		$criteria->order="kantorID asc, nomer asc";
+		
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+
 }

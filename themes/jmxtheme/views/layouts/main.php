@@ -66,9 +66,9 @@
 
     <body class="page-header-fixed page-quick-sidebar-over-content" >
             <!-- BEGIN HEADER -->
-            <div class="page-header navbar navbar-fixed-top">
+            <div class="page-header navbar navbar-fixed-top" style="background-color:#ffffff; border-bottom:2px solid #eeeeee">
                 <!-- BEGIN HEADER INNER -->
-                <div class="page-header-inner">
+                <div class="page-header-inner" style="background-color:#ffffff">
                     <!-- BEGIN LOGO -->
                     <a href=""><img style="margin-top:12px;" width="200px;" src="<?php echo Yii::app()->baseUrl; ?>/images/logo_jmx.jpg" alt="Logo"></a>
                     <!-- END LOGO -->

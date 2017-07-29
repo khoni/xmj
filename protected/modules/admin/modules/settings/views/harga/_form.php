@@ -1,5 +1,4 @@
 <?php $this->renderPartial('_pop_up_browse_cab'); ?>
-<?php $this->renderPartial('_pop_up_browse_cab2'); ?>
 
 <?php $form=$this->beginWidget('booster.widgets.TbActiveForm',array(
 	'id'=>'harga-form',
@@ -78,17 +77,8 @@
                         'prompt'=>'Pilih propinsi terlebih dahulu...',
                         'ajax' => array(
                             'type'=>'POST', 
-                            'url'=>Yii::app()->createUrl('daerah/loadkecamatan'),
-                            //'update'=>'#Harga_kecamatanID',
-							'success'=>'function(data){
-								$("#Harga_kecamatanID").html(data);
-								$.ajax({
-									url: "'.Yii::app()->createUrl('daerah/loadWilayah_kantor/id/').'",
-									success: function(data){
-									  $("#Harga_destinasi_kantorID").val(data);
-									}
-								});								
-							}',
+                            'url'=>Yii::app()->createUrl('daerah/loadWilayah_kantor'),
+                            'update'=>'#div_kantor',
                             'data'=>array('kab_id' => 'js:this.value', 'YII_CSRF_TOKEN' => Yii::app()->request->csrfToken),
                         ),					
                     ),						
@@ -96,8 +86,10 @@
             )
         );
         ?>
-    
+        <div id="div_kantor"><hr /></div>
+
         <?php
+		/*
         echo $form->dropDownListGroup(
             $model,
             'kecamatanID',
@@ -139,26 +131,29 @@
                 )
             )
         );
-        ?>
+        */
+		?>
 
 	</div>
 
 	<div class="col-md-4">
         <div class="note note-success">
-            Origin to Destintion
+            Origin
         </div>
 
-        <?php //echo $form->textFieldGroup($model,'origin_kantorID',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>50)))); ?>
-		<?php echo $form->textFieldGroup($model,'origin_kantorID',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','readonly'=>'readonly','maxlength'=>50,'onkeypress'=>'return event.charCode <= 57')))); ?> 
-        <a class="btn btn-info" href="#pop_up_browse_cab" data-toggle="modal" onclick='return false;'>Browse</a>
-        <div align="center" id="div_kantor" style="clear:both"></div>
-        <br />
-    
-        <?php //echo $form->textFieldGroup($model,'destinasi_kantorID',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>50)))); ?>
-		<?php echo $form->textFieldGroup($model,'destinasi_kantorID',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','readonly'=>'readonly','maxlength'=>50,'onkeypress'=>'return event.charCode <= 57')))); ?> 
-        <a class="btn btn-info" href="#pop_up_browse_cab2" data-toggle="modal" onclick='return false;'>Browse</a>
-        <div align="center" id="div_kantor2" style="clear:both"></div>
-		<br />
+		<div class="row">
+            <div class="col-md-8">
+				<?php echo $form->textFieldGroup($model,'origin_kantorID',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','readonly'=>'readonly','maxlength'=>50,'onkeypress'=>'return event.charCode <= 57')))); ?> 
+                <div style="clear:both; margin-top:-8px;" id="div_origin"><?= empty($model->originKantor->fullnama) ? '-' : $model->originKantor->fullnama ?></div>
+            </div>
+            <div class="col-md-4">
+				<div class="form-group">
+                	<label class="control-label" >&nbsp;</label>
+	                <button class="btn btn-xs btn-info span5 form-control" href="#pop_up_browse_cab" data-toggle="modal" onclick='return false;'>Browse</button>
+    			</div>
+            </div>
+        </div>
+		<br />    
         
 		<?php //echo $form->textFieldGroup($model,'jenis_serviceID',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>50)))); ?>
 		<?php

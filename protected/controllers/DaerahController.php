@@ -23,7 +23,7 @@ class DaerahController extends Controller {
     public function accessRules(){
         return array(
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions'=>array('loadpropinsi','loadkabupaten','loadkecamatan','loadkelurahan','loadWilayah_kerja'),
+                'actions'=>array('loadpropinsi','loadkabupaten','loadkecamatan','loadkelurahan','loadWilayah_kantor'),
                 'users'=>array('@'),
             ),
             array('deny',  // deny all users
@@ -79,9 +79,10 @@ class DaerahController extends Controller {
 	   ;
 	}
 
-	public function actionLoadWilayah_kantor($id){
-	   $data=Kabupaten::model()->find(array('condition'=>'kabupatenID=:region_id', 'params'=>array(':region_id'=>$id)));
-	   echo empty($data->wilayah_kantorID) ? '' : $data->wilayah_kantorID;
+	public function actionLoadWilayah_kantor(){
+	   $data=Kabupaten::model()->find("kabupatenID='".$_POST['kab_id']."'");
+	   $txt='<div class="note note-warning"><b>Warning ! </b> Diluar Jangkauan Pengiriman.<br /><small>Set Jangkauan di menu "settings->wilayah kerja"<small></div>';
+	   echo empty($data->wilayah_kantorID) ?  $txt : $data->wilayah_kantorID;
 	}
 
 }

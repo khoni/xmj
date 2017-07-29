@@ -78,6 +78,6 @@
 <script>
 function set_kantor_induk(cabangID,namaKantor,kodeKantor){
 	$('#Harga_origin_kantorID').val(cabangID);
-	$('#div_kantor').html('Nama Kantor : ' + namaKantor + '<br />Kode Cabang : ' + kodeKantor);
+	$('#div_origin').html(namaKantor + ' [ '+ kodeKantor +' ]');
 }
 </script>

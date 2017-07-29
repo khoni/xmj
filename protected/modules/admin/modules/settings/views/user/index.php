@@ -24,14 +24,14 @@ $this->breadcrumbs=array(
 			'value' => '$this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize + ($row+1)',
 		),
 		[
-			'name' => 'roleID',
-			'filter' => CHtml::listData(Role::model()->findAll(),'roleID','nama'),
-			'value' => '$data->roleNama',
-		],
-		[
 			'name' => 'nama',
 			'type' => 'raw',
 			'value' => '"$data->nama<br /><small style=\"color:#999999;\"><i>User ID : $data->userID<br />$data->username</i></small>"',
+		],
+		[
+			'name' => 'roleID',
+			'filter' => CHtml::listData(Role::model()->findAll(),'roleID','nama'),
+			'value' => '$data->roleNama',
 		],
 		'hp',
 		[

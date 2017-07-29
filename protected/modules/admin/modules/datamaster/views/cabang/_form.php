@@ -163,6 +163,7 @@
 	<?php echo $form->textFieldGroup($user,'kode',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>50)))); ?>
 	<?php echo $form->textFieldGroup($user,'nama_kantor',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>50)))); ?>
 	<?php echo $form->textFieldGroup($user,'discount',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>50,'onkeypress'=>'return event.charCode <= 57')))); ?>    
+    <?php echo $form->textFieldGroup($user,'awalan_connote',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>50,'onkeypress'=>'return event.charCode <= 57')))); ?>
 	<!--
     <div class="form-group">
     	<label class="col-sm-3 control-label required" for="Cabang_daerahID">Data Daerah <span class="required">*</span></label>

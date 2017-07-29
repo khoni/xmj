@@ -84,6 +84,11 @@ $this->breadcrumbs=array(
     	'value' => empty($model->kantor->kode) ? '-' : $model->kantor->kode,
     ],	
     [
+    	'label' => 'Awalan Connote',
+    	'type' => 'raw',
+    	'value' => empty($model->kantor->awalan_connote) ? '-' : $model->kantor->awalan_connote,
+    ],	
+    [
     	'name' => 'discount',
     	'type' => 'raw',
     	'value' => empty($model->kantor->discount) ? '-' : $model->kantor->discount." %",

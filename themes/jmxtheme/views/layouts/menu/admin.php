@@ -26,6 +26,15 @@ $menu=array(
 				'label' => '<i class="glyphicon glyphicon-list-alt"> </i> Biaya Pusat',
 				'url' => array('/admin/settings/biaya_pusat/index'),
 			),
+			array(
+				'label' => '<i class="glyphicon glyphicon-list-alt"> </i> Pengaturan Harga',
+				'url' => array('/admin/settings/harga/index'),
+			),
+			array(
+				'label' => '<i class="glyphicon glyphicon-list-alt"> </i> Connote',
+				'url' => array('/admin/settings/connote/index'),
+			),
+
 		),
 	),
 	array(
@@ -78,16 +87,11 @@ $menu=array(
 				'label' => '<i class="glyphicon glyphicon-list-alt"> </i> Jenis Barang',
 				'url' => array('/admin/datamaster/jenis_barang/index'),
 			),
-			array(
-				'label' => '<i class="glyphicon glyphicon-list-alt"> </i> Pengaturan Harga',
-				'url' => array('/admin/datamaster/harga/index'),
-			),
-
 		),
 	),
 
 	array(
-		'label' => '<i class="icon-plus"></i> Connote<span class="arrow"></span>',
+		'label' => '<i class="icon-plus"></i> Proses<span class="arrow"></span>',
 		'url' => array('#'),	
 		'itemOptions' => array(
 			'class' => ''
@@ -97,14 +101,26 @@ $menu=array(
 		),
 		'items' => array(
 			array(
-				'label' => '<i class="glyphicon glyphicon-list-alt"> </i> Generate',
-				'url' => array('/admin/transaksi/harga/index'),
+				'label' => '<i class="glyphicon glyphicon-list-alt"> </i> Transaksi',
+				'url' => array('/admin/proses/pengiriman/index'),
+			),
+			array(
+				'label' => '<i class="glyphicon glyphicon-list-alt"> </i> Packing',
+				'url' => array('/admin/proses/packing/index'),
+			),
+			array(
+				'label' => '<i class="glyphicon glyphicon-list-alt"> </i> Manifest',
+				'url' => array('/admin/proses/manifest/index'),
+			),
+			array(
+				'label' => '<i class="glyphicon glyphicon-list-alt"> </i> Pre Alert',
+				'url' => array('/admin/proses/pre_alert/index'),
 			),
 		),
 	),
 
 	array(
-		'label' => '<i class="icon-plus"></i> Transaksi<span class="arrow"></span>',
+		'label' => '<i class="icon-plus"></i> Keuangan Cabang<span class="arrow"></span>',
 		'url' => array('#'),	
 		'itemOptions' => array(
 			'class' => ''
@@ -114,8 +130,12 @@ $menu=array(
 		),
 		'items' => array(
 			array(
-				'label' => '<i class="glyphicon glyphicon-list-alt"> </i> Pengaturan Harga',
-				'url' => array('/admin/transaksi/harga/index'),
+				'label' => '<i class="glyphicon glyphicon-list-alt"> </i> Deposit',
+				'url' => array('/admin/keuangan/deposit/index'),
+			),
+			array(
+				'label' => '<i class="glyphicon glyphicon-list-alt"> </i> Saldo',
+				'url' => array('/admin/keuangan/saldo/index'),
 			),
 		),
 	),

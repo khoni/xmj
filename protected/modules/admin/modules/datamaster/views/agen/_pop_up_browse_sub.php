@@ -51,7 +51,7 @@
                         ],		
                         [
                             'name' => 'nama_kantor',
-                            'header' => 'Nama Kantor Cabang',
+                            'header' => 'Nama Kantor Sub Agen',
                             'type' => 'raw',
                             'value' => function($data){
 								$ktr=empty($data->kantor->nama_kantor) ? '-' : $data->kantor->nama_kantor;

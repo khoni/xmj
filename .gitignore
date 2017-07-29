@@ -30,3 +30,4 @@ phpunit.phar
 /assets
 /protected/vendor
 /themes/jmxtheme/assets
+/jmx_db.sql

@@ -1,11 +1,11 @@
 <?php
 
 /**
- * This is the model class for table "transaksi_detail".
+ * This is the model class for table "pengiriman_detail".
  *
- * The followings are the available columns in table 'transaksi_detail':
- * @property string $transaksi_detailID
- * @property string $transaksiID
+ * The followings are the available columns in table 'pengiriman_detail':
+ * @property string $pengiriman_detailID
+ * @property string $pengirimanID
  * @property double $berat_aktual_kg
  * @property double $berat_volume_kg
  * @property integer $koli
@@ -19,15 +19,17 @@
  * @property string $rp_packing
  * @property string $rp_handling
  * @property string $rp_diskon
+ * @property integer $updated_at
+ * @property string $updated_by
  */
-class TransaksiDetail extends CActiveRecord
+class PengirimanDetail extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'transaksi_detail';
+		return 'pengiriman_detail';
 	}
 
 	/**
@@ -38,14 +40,14 @@ class TransaksiDetail extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('transaksi_detailID, transaksiID', 'required'),
-			array('koli', 'numerical', 'integerOnly'=>true),
+			array('pengiriman_detailID, pengirimanID', 'required'),
+			array('koli, updated_at', 'numerical', 'integerOnly'=>true),
 			array('berat_aktual_kg, berat_volume_kg, panjang_cm, lebar_cm, tinggi_cm', 'numerical'),
-			array('transaksi_detailID, transaksiID', 'length', 'max'=>50),
+			array('pengiriman_detailID, pengirimanID, updated_by', 'length', 'max'=>50),
 			array('nilai_barang, rp_asuransi, rp_biaya_kirim, rp_admin, rp_packing, rp_handling, rp_diskon', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('transaksi_detailID, transaksiID, berat_aktual_kg, berat_volume_kg, koli, panjang_cm, lebar_cm, tinggi_cm, nilai_barang, rp_asuransi, rp_biaya_kirim, rp_admin, rp_packing, rp_handling, rp_diskon', 'safe', 'on'=>'search'),
+			array('pengiriman_detailID, pengirimanID, berat_aktual_kg, berat_volume_kg, koli, panjang_cm, lebar_cm, tinggi_cm, nilai_barang, rp_asuransi, rp_biaya_kirim, rp_admin, rp_packing, rp_handling, rp_diskon, updated_at, updated_by', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,8 +68,8 @@ class TransaksiDetail extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'transaksi_detailID' => 'Transaksi Detail',
-			'transaksiID' => 'Transaksi',
+			'pengiriman_detailID' => 'Pengiriman Detail',
+			'pengirimanID' => 'Pengiriman',
 			'berat_aktual_kg' => 'Berat Aktual Kg',
 			'berat_volume_kg' => 'Berat Volume Kg',
 			'koli' => 'Koli',
@@ -81,6 +83,8 @@ class TransaksiDetail extends CActiveRecord
 			'rp_packing' => 'Rp Packing',
 			'rp_handling' => 'Rp Handling',
 			'rp_diskon' => 'Rp Diskon',
+			'updated_at' => 'Updated At',
+			'updated_by' => 'Updated By',
 		);
 	}
 
@@ -102,8 +106,8 @@ class TransaksiDetail extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('transaksi_detailID',$this->transaksi_detailID,true);
-		$criteria->compare('transaksiID',$this->transaksiID,true);
+		$criteria->compare('pengiriman_detailID',$this->pengiriman_detailID,true);
+		$criteria->compare('pengirimanID',$this->pengirimanID,true);
 		$criteria->compare('berat_aktual_kg',$this->berat_aktual_kg);
 		$criteria->compare('berat_volume_kg',$this->berat_volume_kg);
 		$criteria->compare('koli',$this->koli);
@@ -117,6 +121,8 @@ class TransaksiDetail extends CActiveRecord
 		$criteria->compare('rp_packing',$this->rp_packing,true);
 		$criteria->compare('rp_handling',$this->rp_handling,true);
 		$criteria->compare('rp_diskon',$this->rp_diskon,true);
+		$criteria->compare('updated_at',$this->updated_at);
+		$criteria->compare('updated_by',$this->updated_by,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -127,7 +133,7 @@ class TransaksiDetail extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return TransaksiDetail the static model class
+	 * @return PengirimanDetail the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

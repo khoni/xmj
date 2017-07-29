@@ -210,6 +210,8 @@
         </div>
         <?php echo $form->textFieldGroup($kantor,'kode',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>50)))); ?>
         <?php echo $form->textFieldGroup($kantor,'nama_kantor',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>50)))); ?>
+		<?php echo $form->textFieldGroup($kantor,'discount',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>50,'onkeypress'=>'return event.charCode <= 57')))); ?>    
+        <?php echo $form->textFieldGroup($kantor,'awalan_connote',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>50,'onkeypress'=>'return event.charCode <= 57')))); ?>    
         <hr />
         
         <div class="form-group">

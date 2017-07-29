@@ -1,4 +1,4 @@
-<div id="pop_up_browse_cab2" class="modal fade in" tabindex="-1" aria-hidden="false" style="display: none;">
+<div id="pop_up_browse_cab" class="modal fade in" tabindex="-1" aria-hidden="false" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -30,25 +30,6 @@
                             'header' => 'No.',
                             'value' => '$this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize + ($row+1)',
                         ),    
-                            
-                        [
-                            'name' => 'cabangID',
-                            'type' => 'raw',
-                            'value' => function($data){
-								$ktr=empty($data->kantor->nama_kantor) ? '-' : $data->kantor->nama_kantor;
-                                $kode=empty($data->kantor->kode) ? '-' : $data->kantor->kode;
-								return (empty($data->cabangID) ? '-' : $data->cabangID)."<br /><a class='badge badge-roundless badge-danger' href='#' onClick=\"set_kantor_induk2('".$data->kantorID."','$ktr','$kode')\" data-dismiss='modal' aria-hidden='true' >Pilih </a> ";
-                                //return empty($data->cabangID) ? '-' : $data->cabangID;
-                            },
-                        ],		
-                        
-                        [
-                            'name' => 'kode',
-                            'type' => 'raw',
-                            'value' => function($data){
-                                return empty($data->kantor->kode) ? '-' : $data->kantor->kode;
-                            },
-                        ],		
                         [
                             'name' => 'nama_kantor',
                             'header' => 'Nama Kantor Cabang',
@@ -59,6 +40,31 @@
                                 $email=empty($data->kantor->user->email) ? '-' : $data->kantor->user->email;
                                 $userid=empty($data->kantor->user->userID) ? '-' : $data->kantor->user->userID;
                                 return "$ktr<br /> <small style='font-size:10px;color:#999999'><b>$nama</b><br />Email : $email<br />User ID : $userid</small>";
+                            },
+                        ],		                        
+                        [
+                            'name' => 'kode',
+                            'type' => 'raw',
+                            'value' => function($data){
+                                return empty($data->kantor->kode) ? '-' : $data->kantor->kode;
+                            },
+                        ],		
+                        [
+                            'name' => 'cabangID',
+                            'type' => 'raw',
+                            'value' => function($data){
+								return (empty($data->cabangID) ? '-' : $data->cabangID);
+                            },
+                        ],                        
+                        [
+                            'name' => 'kantorID',
+                            'type' => 'raw',
+                            'value' => function($data){
+								$ktr=empty($data->kantor->nama_kantor) ? '-' : $data->kantor->nama_kantor;
+                                $kode=empty($data->kantor->kode) ? '-' : $data->kantor->kode;
+								$awalan=empty($data->kantor->awalan_connote) ? '-' : $data->kantor->awalan_connote;
+								return (empty($data->kantorID) ? '-' : $data->kantorID)."<br /><a class='badge badge-roundless badge-danger' href='#' onClick=\"set_kantor_induk('".$data->kantorID."','$ktr','$kode','$awalan')\" data-dismiss='modal' aria-hidden='true' >Pilih </a> ";
+                                //return empty($data->cabangID) ? '-' : $data->cabangID;
                             },
                         ],		
                     ),
@@ -76,8 +82,8 @@
 </div>
 
 <script>
-function set_kantor_induk2(cabangID,namaKantor,kodeKantor){
-	$('#Harga_destinasi_kantorID').val(cabangID);
-	$('#div_kantor2').html('Nama Kantor : ' + namaKantor + '<br />Kode Cabang : ' + kodeKantor);
+function set_kantor_induk(kantorID,namaKantor,kodeKantor,awalan){
+	$('#kantorID').val(kantorID);
+	$('#div_kantor').html(namaKantor + ' [' + kodeKantor + ']<br />Awalan Connote : ' + awalan);
 }
 </script>

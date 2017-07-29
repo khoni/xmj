@@ -1,20 +1,20 @@
 <?php
 
 /**
- * This is the model class for table "transaksi_via".
+ * This is the model class for table "connote_status".
  *
- * The followings are the available columns in table 'transaksi_via':
- * @property string $transaksiID
- * @property string $kantorID
+ * The followings are the available columns in table 'connote_status':
+ * @property string $connote_statusID
+ * @property string $nama
  */
-class TransaksiVia extends CActiveRecord
+class ConnoteStatus extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'transaksi_via';
+		return 'connote_status';
 	}
 
 	/**
@@ -25,11 +25,11 @@ class TransaksiVia extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('transaksiID, kantorID', 'required'),
-			array('transaksiID, kantorID', 'length', 'max'=>50),
+			array('connote_statusID, nama', 'required'),
+			array('connote_statusID, nama', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('transaksiID, kantorID', 'safe', 'on'=>'search'),
+			array('connote_statusID, nama', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -50,8 +50,8 @@ class TransaksiVia extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'transaksiID' => 'Transaksi',
-			'kantorID' => 'Kantor',
+			'connote_statusID' => 'Connote Status',
+			'nama' => 'Nama',
 		);
 	}
 
@@ -73,8 +73,8 @@ class TransaksiVia extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('transaksiID',$this->transaksiID,true);
-		$criteria->compare('kantorID',$this->kantorID,true);
+		$criteria->compare('connote_statusID',$this->connote_statusID,true);
+		$criteria->compare('nama',$this->nama,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -85,7 +85,7 @@ class TransaksiVia extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return TransaksiVia the static model class
+	 * @return ConnoteStatus the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

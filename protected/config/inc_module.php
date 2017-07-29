@@ -17,6 +17,8 @@ $modul=array(
 		'modules'=>array(
 			'datamaster',
 			'settings',
+			'keuangan',
+			'proses',
 		),	
 	),
 	'agen',
@@ -29,5 +31,6 @@ $modul=array(
 	'sales',
 	'subagen',
 	'vupdate',
+	'mobile',
 );
 ?>

@@ -30,91 +30,79 @@ $this->breadcrumbs=array(
     [
     	'name' => 'negaraID',
     	'type' => 'raw',
-    	'value' => empty($model->negaraID) ? '-' : $model->negaraID,
+    	'value' => empty($model->negara->nama) ? '-' : $model->negara->nama,
     ],	
 	
     [
     	'name' => 'propinsiID',
     	'type' => 'raw',
-    	'value' => empty($model->propinsiID) ? '-' : $model->propinsiID,
+    	'value' => empty($model->propinsi->nama) ? '-' : $model->propinsi->nama,
     ],	
 	
     [
     	'name' => 'kabupatenID',
     	'type' => 'raw',
-    	'value' => empty($model->kabupatenID) ? '-' : $model->kabupatenID,
+    	'value' => empty($model->kabupaten->nama) ? '-' : $model->kabupaten->nama,
     ],	
 	
     [
     	'name' => 'kecamatanID',
     	'type' => 'raw',
-    	'value' => empty($model->kecamatanID) ? '-' : $model->kecamatanID,
+    	'value' => empty($model->kecamatan->nama) ? '-' : $model->kecamatan->nama,
     ],	
 	
     [
     	'name' => 'kelurahanID',
     	'type' => 'raw',
-    	'value' => empty($model->kelurahanID) ? '-' : $model->kelurahanID,
+    	'value' => empty($model->kelurahan->nama) ? '-' : $model->kelurahan->nama,
     ],	
 	
     [
     	'name' => 'origin_kantorID',
     	'type' => 'raw',
-    	'value' => empty($model->origin_kantorID) ? '-' : $model->origin_kantorID,
-    ],	
-	
-    [
-    	'name' => 'destinasi_kantorID',
-    	'type' => 'raw',
-    	'value' => empty($model->destinasi_kantorID) ? '-' : $model->destinasi_kantorID,
+    	'value' => empty($model->originKantor->fullnama) ? '-' : $model->originKantor->fullnama,
     ],	
 	
     [
     	'name' => 'jenis_serviceID',
     	'type' => 'raw',
-    	'value' => empty($model->jenis_serviceID) ? '-' : $model->jenis_serviceID,
+    	'value' => empty($model->jenisService->nama) ? '-' : $model->jenisService->nama . " - " .$model->jenisService->keterangan,
     ],	
 	
     [
     	'name' => 'hari_estimasi',
     	'type' => 'raw',
-    	'value' => empty($model->hari_estimasi) ? '-' : $model->hari_estimasi,
+    	'value' => empty($model->hari_estimasi) ? '-' : $model->hari_estimasi ." Hari",
     ],	
 	
     [
     	'name' => 'rp_transit_kgp',
     	'type' => 'raw',
-    	'value' => empty($model->rp_transit_kgp) ? '-' : $model->rp_transit_kgp,
+    	'value' => number_format(empty($model->rp_transit_kgp) ? '-' : $model->rp_transit_kgp),
     ],	
 	
     [
     	'name' => 'rp_transit_kgs',
     	'type' => 'raw',
-    	'value' => empty($model->rp_transit_kgs) ? '-' : $model->rp_transit_kgs,
+    	'value' => number_format(empty($model->rp_transit_kgs) ? '-' : $model->rp_transit_kgs),
     ],	
 	
     [
     	'name' => 'rp_transit_lainnya',
     	'type' => 'raw',
-    	'value' => empty($model->rp_transit_lainnya) ? '-' : $model->rp_transit_lainnya,
+    	'value' => number_format(empty($model->rp_transit_lainnya) ? '-' : $model->rp_transit_lainnya),
     ],	
 	
     [
     	'name' => 'rp_bp_kgp',
     	'type' => 'raw',
-    	'value' => empty($model->rp_bp_kgp) ? '-' : $model->rp_bp_kgp,
+    	'value' => number_format(empty($model->rp_bp_kgp) ? '-' : $model->rp_bp_kgp),
     ],	
 	
     [
     	'name' => 'rp_bp_kgs',
     	'type' => 'raw',
-    	'value' => empty($model->rp_bp_kgs) ? '-' : $model->rp_bp_kgs,
-    ],	
-	
-    [
-    	'name' => 'rp_delivery',
-    	'type' => 'raw',
-    	'value' => empty($model->rp_delivery) ? '-' : $model->rp_delivery,
+    	'value' => number_format(empty($model->rp_bp_kgs) ? '-' : $model->rp_bp_kgs),
     ],	
 	
     [

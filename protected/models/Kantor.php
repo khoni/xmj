@@ -9,7 +9,7 @@
  * @property string $kode
  * @property double $discount
  * @property string $nama_kantor
- * @property string $alamat
+ * @property string $alamat_jalan
  * @property string $daerahID
  * @property string $telepon
  * @property string $hp
@@ -47,12 +47,12 @@ class Kantor extends CActiveRecord
 		return array(
 			array('kantorID, userID', 'required'),
 
-			array('kode, nama_kantor, alamat','filter', 'filter'=>'trim'),
+			array('kode, nama_kantor, alamat_jalan','filter', 'filter'=>'trim'),
 			array('kode,nama_kantor','filter','filter'=>'strtoupper'),
 
-			array('kode, nama_kantor, kantorID, userID, alamat_negaraID, alamat_propinsiID, alamat_kabupatenID, alamat_jalan', 'required', 'on' => 'newKantorCabang'),
-			array('kode, nama_kantor, kantorID, cabangID, userID, alamat_negaraID, alamat_propinsiID, alamat_kabupatenID, alamat_jalan', 'required', 'on' => 'newKantorSubAgen'),
-			array('kode, nama_kantor, kantorID, agen_subID, userID, alamat_negaraID, alamat_propinsiID, alamat_kabupatenID, alamat_jalan', 'required', 'on' => 'newKantorAgen'),
+			array('awalan_connote, kode, nama_kantor, kantorID, userID, alamat_negaraID, alamat_propinsiID, alamat_kabupatenID, alamat_jalan', 'required', 'on' => 'newKantorCabang'),
+			array('awalan_connote, kode, nama_kantor, kantorID, cabangID, userID, alamat_negaraID, alamat_propinsiID, alamat_kabupatenID, alamat_jalan', 'required', 'on' => 'newKantorSubAgen'),
+			array('awalan_connote, kode, nama_kantor, kantorID, agen_subID, userID, alamat_negaraID, alamat_propinsiID, alamat_kabupatenID, alamat_jalan', 'required', 'on' => 'newKantorAgen'),
 			
 			//array('is_aktif', 'numerical', 'integerOnly'=>true),
 			//array('discount', 'numerical'),
@@ -60,7 +60,7 @@ class Kantor extends CActiveRecord
 
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('kode, nama, alamat, alamat_kecamatanID, alamat_kelurahanID', 'safe'),
+			array('kode, nama, alamat_jalan, alamat_kecamatanID, alamat_kelurahanID, awalan_connote', 'safe'),
 			array('kantorID, userID, kode, nama_kantor, kantorID, userID, alamat_negaraID, alamat_propinsiID, alamat_kabupatenID, alamat_jalan, discount, nama_kantor, is_aktif', 'safe', 'on'=>'search'),
 		);
 	}
@@ -160,7 +160,7 @@ class Kantor extends CActiveRecord
 		$criteria->compare('kode',$this->kode,true);
 		$criteria->compare('discount',$this->discount);
 		$criteria->compare('nama_kantor',$this->nama_kantor,true);
-		$criteria->compare('alamat',$this->alamat,true);
+		$criteria->compare('alamat_jalan',$this->alamat_jalan,true);
 		
 		$criteria->join=" right join cabang c on t.kantorID=c.kantorID ";
 		

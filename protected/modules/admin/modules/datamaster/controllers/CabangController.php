@@ -62,6 +62,7 @@ class CabangController extends Controller
 					$kantor->discount=$user->discount;
 					$kantor->is_aktif=1;
 					$kantor->kantorID="ktr_".Yii::app()->user->uniqidReal();
+					$kantor->awalan_connote=$user->awalan_connote;
 					$kantor->updated_at=time();
 					$kantor->updated_by=Yii::app()->user->id;
 					if($kantor->validate()){
@@ -102,6 +103,7 @@ class CabangController extends Controller
 		$user->kode=$kantor->kode;
 		$user->discount=$kantor->discount;
 		$user->koordinat_maps=$kantor->koordinat_maps;		
+		$user->awalan_connote=$kantor->awalan_connote;
 		
         if(isset($_POST['User'])){
             $user->attributes=$_POST['User'];
@@ -118,6 +120,7 @@ class CabangController extends Controller
 				$kantor->alamat_jalan=$user->ktr_alamat_jalan;
 				$kantor->koordinat_maps=$user->koordinat_maps;
 				$kantor->discount=$user->discount;
+				$kantor->awalan_connote=$user->awalan_connote;
 				$kantor->is_aktif=1;
 				$kantor->updated_at=time();
 				$kantor->updated_by=Yii::app()->user->id;

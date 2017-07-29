@@ -41,14 +41,6 @@ $this->breadcrumbs=array(
 		],		
 		
 		[
-			'name' => 'kode',
-			'type' => 'raw',
-			//'filter' => CHtml::listData(Role::model()->findAll(),'roleID','nama'),
-			'value' => function($data){
-            	return empty($data->kantor->kode) ? '-' : $data->kantor->kode;
-            },
-		],		
-		[
 			'name' => 'nama_kantor',
 			'header' => 'Nama Kantor',
 			'type' => 'raw',
@@ -58,8 +50,16 @@ $this->breadcrumbs=array(
             },
 		],		
 		[
+			'name' => 'kode',
+			'type' => 'raw',
+			//'filter' => CHtml::listData(Role::model()->findAll(),'roleID','nama'),
+			'value' => function($data){
+            	return empty($data->kantor->kode) ? '-' : $data->kantor->kode;
+            },
+		],		
+		[
 			'name' => 'nama',
-			'header' => 'Nama Pengguna',
+			'header' => 'Penanggung Jawab',
 			'type' => 'raw',
 			//'filter' => CHtml::listData(Role::model()->findAll(),'roleID','nama'),
 			'value' => function($data){

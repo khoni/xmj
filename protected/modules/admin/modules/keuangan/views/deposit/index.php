@@ -1,17 +1,17 @@
 <?php
 $this->breadcrumbs=array(
-	'Hargas',
+	'Deposits',
 );
 
 ?>
 
-<h2>Harga<br /><small style="font-size:14px;color:#999999">Manage</small></h2>
+<h2>Deposit<br /><small style="font-size:14px;color:#999999">Manage</small></h2>
 <hr />
 
 <?php echo CHtml::link('Create',array('create'),array('class'=>'btn btn-sm blue-madison')); ?> 
 
 <?php $this->widget('booster.widgets.TbGridView',array(
-    'id'=>'harga-grid',
+    'id'=>'deposit-grid',
     'type' => 'hover condensed striped',
     'dataProvider' => $model->search(),
     'filter' => $model,
@@ -28,111 +28,105 @@ $this->breadcrumbs=array(
         ),    
 			
 		[
-			'name' => 'nama_daerah',
-			'type' => 'raw',
-			'value' => function($data){
-				$neg=empty($data->negara->nama) ? '' : $data->negara->nama;
-				$prop=empty($data->propinsi->nama) ? '' : $data->propinsi->nama;
-				$kab=empty($data->kabupaten->nama) ? '' : $data->kabupaten->nama;
-				$kec=empty($data->kecamatan->nama) ? '' : $data->kecamatan->nama;
-				$kel=empty($data->kelurahan->nama) ? '' : $data->kelurahan->nama;
-            	return "Kel. $kel<br /><small>Kec. $kec<br />$kab, <br />$prop,<br />$neg</small>";
-            },
-		],		
-		[
-			'name' => 'origin_kantorID',
+			'name' => 'kantorID',
 			'type' => 'raw',
 			//'filter' => CHtml::listData(Role::model()->findAll(),'roleID','nama'),
 			'value' => function($data){
-				$ktr=empty($data->originKantor->nama_kantor) ? '-' : $data->originKantor->nama_kantor;
-				$kode=empty($data->originKantor->kode) ? '-' : $data->originKantor->kode;
-            	return $ktr."<br />[".$kode."]";
+            	return empty($data->kantorID) ? '-' : $data->kantorID;
             },
 		],		
 		
 		[
-			'name' => 'destinasi_kantorID',
+			'name' => 'tanggal_transfer',
 			'type' => 'raw',
 			//'filter' => CHtml::listData(Role::model()->findAll(),'roleID','nama'),
 			'value' => function($data){
-				$ktr=empty($data->destinasiKantor->nama_kantor) ? '-' : $data->destinasiKantor->nama_kantor;
-				$kode=empty($data->destinasiKantor->kode) ? '-' : $data->destinasiKantor->kode;
-            	return $ktr."<br />[".$kode."]";
+            	return empty($data->tanggal_transfer) ? '-' : $data->tanggal_transfer;
             },
 		],		
 		
 		[
-			'name' => 'jenis_serviceID',
+			'name' => 'is_transfer',
 			'type' => 'raw',
 			//'filter' => CHtml::listData(Role::model()->findAll(),'roleID','nama'),
 			'value' => function($data){
-            	return empty($data->jenis_serviceID) ? '-' : $data->jenis_serviceID;
+            	return empty($data->is_transfer) ? '-' : $data->is_transfer;
             },
 		],		
 		
 		[
-			'name' => 'hari_estimasi',
+			'name' => 'nama_bank_asal',
 			'type' => 'raw',
 			//'filter' => CHtml::listData(Role::model()->findAll(),'roleID','nama'),
 			'value' => function($data){
-            	return empty($data->hari_estimasi) ? '-' : $data->hari_estimasi;
+            	return empty($data->nama_bank_asal) ? '-' : $data->nama_bank_asal;
             },
 		],		
 		
 		[
-			'name' => 'rp_transit_kgp',
+			'name' => 'norek_bank_asal',
 			'type' => 'raw',
 			//'filter' => CHtml::listData(Role::model()->findAll(),'roleID','nama'),
 			'value' => function($data){
-            	return empty($data->rp_transit_kgp) ? '-' : $data->rp_transit_kgp;
+            	return empty($data->norek_bank_asal) ? '-' : $data->norek_bank_asal;
+            },
+		],		
+
+		[
+			'name' => 'nama_bank_tujuan',
+			'type' => 'raw',
+			//'filter' => CHtml::listData(Role::model()->findAll(),'roleID','nama'),
+			'value' => function($data){
+            	return empty($data->nama_bank_tujuan) ? '-' : $data->nama_bank_tujuan;
             },
 		],		
 		
 		[
-			'name' => 'rp_transit_kgs',
+			'name' => 'norek_bank_tujuan',
 			'type' => 'raw',
 			//'filter' => CHtml::listData(Role::model()->findAll(),'roleID','nama'),
 			'value' => function($data){
-            	return empty($data->rp_transit_kgs) ? '-' : $data->rp_transit_kgs;
+            	return empty($data->norek_bank_tujuan) ? '-' : $data->norek_bank_tujuan;
             },
 		],		
 		
 		[
-			'name' => 'rp_transit_lainnya',
+			'name' => 'rp_jumlah',
 			'type' => 'raw',
 			//'filter' => CHtml::listData(Role::model()->findAll(),'roleID','nama'),
 			'value' => function($data){
-            	return empty($data->rp_transit_lainnya) ? '-' : $data->rp_transit_lainnya;
+            	return empty($data->rp_jumlah) ? '-' : $data->rp_jumlah;
             },
 		],		
 		
 		[
-			'name' => 'rp_bp_kgp',
+			'name' => 'verified_flag',
 			'type' => 'raw',
 			//'filter' => CHtml::listData(Role::model()->findAll(),'roleID','nama'),
 			'value' => function($data){
-            	return empty($data->rp_bp_kgp) ? '-' : $data->rp_bp_kgp;
+            	return empty($data->verified_flag) ? '-' : $data->verified_flag;
+            },
+		],		
+		
+				/*
+		[
+			'name' => 'verified_time',
+			'type' => 'raw',
+			//'filter' => CHtml::listData(Role::model()->findAll(),'roleID','nama'),
+			'value' => function($data){
+            	return empty($data->verified_time) ? '-' : $data->verified_time;
             },
 		],		
 		
 		[
-			'name' => 'rp_bp_kgs',
+			'name' => 'verified_userID',
 			'type' => 'raw',
 			//'filter' => CHtml::listData(Role::model()->findAll(),'roleID','nama'),
 			'value' => function($data){
-            	return empty($data->rp_bp_kgs) ? '-' : $data->rp_bp_kgs;
+            	return empty($data->verified_userID) ? '-' : $data->verified_userID;
             },
 		],		
 		
-		[
-			'name' => 'rp_delivery',
-			'type' => 'raw',
-			//'filter' => CHtml::listData(Role::model()->findAll(),'roleID','nama'),
-			'value' => function($data){
-            	return empty($data->rp_delivery) ? '-' : $data->rp_delivery;
-            },
-		],		
-		/*		
 		[
 			'name' => 'updated_at',
 			'type' => 'raw',
@@ -150,10 +144,10 @@ $this->breadcrumbs=array(
             	return empty($data->updated_by) ? '-' : $data->updated_by;
             },
 		],		
-		*/
+				*/
         array(
             'class'=>'booster.widgets.TbButtonColumn',
-            'template' => '{view} {update} {delete}',
+            'template' => '{view}',
 			/*
             'buttons' => array(
                 'view' => array(

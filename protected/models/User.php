@@ -27,7 +27,8 @@ class User extends CActiveRecord {
     const STRONG = 1;
 
     public $current_password, $new_password, $retype_new_password, $roleID, $roleNama, $activation_role, $status;
-	public $ktr_alamat_negaraID, $ktr_alamat_propinsiID, $ktr_alamat_kabupatenID, $ktr_alamat_kecamatanID, $ktr_alamat_kelurahanID, $ktr_alamat_jalan, $koordinat_maps, $nama_kantor, $kode, $discount; //=>tabel kantor
+	public 	$ktr_alamat_negaraID, $ktr_alamat_propinsiID, $ktr_alamat_kabupatenID, $ktr_alamat_kecamatanID; //=>tabel kantor
+	public 	$ktr_alamat_kelurahanID, $ktr_alamat_jalan, $koordinat_maps, $nama_kantor, $kode, $discount, $awalan_connote; //=>tabel kantor
 	public $cabangID;
 	public $agen_subID;
 
@@ -56,9 +57,9 @@ class User extends CActiveRecord {
 			array('hp,telepon','numerical','integerOnly'=>true),
             array('email', 'email'),
 
-            array('username, email, nama, hp, ktr_alamat_negaraID, ktr_alamat_propinsiID, ktr_alamat_kabupatenID, ktr_alamat_jalan, nama_kantor, kode', 'required', 'on' => 'newKantorCabang'),
-            array('cabangID, username, email, nama, hp, ktr_alamat_negaraID, ktr_alamat_propinsiID, ktr_alamat_kabupatenID, ktr_alamat_jalan, nama_kantor, kode', 'required', 'on' => 'newKantorSubAgen'),
-            array('agen_subID, username, email, nama, hp, ktr_alamat_negaraID, ktr_alamat_propinsiID, ktr_alamat_kabupatenID, ktr_alamat_jalan, nama_kantor, kode', 'required', 'on' => 'newKantorAgen'),
+            array('username, email, nama, hp, ktr_alamat_negaraID, ktr_alamat_propinsiID, ktr_alamat_kabupatenID, ktr_alamat_jalan, nama_kantor, kode, awalan_connote', 'required', 'on' => 'newKantorCabang'),
+            array('cabangID, username, email, nama, hp, ktr_alamat_negaraID, ktr_alamat_propinsiID, ktr_alamat_kabupatenID, ktr_alamat_jalan, nama_kantor, kode, awalan_connote', 'required', 'on' => 'newKantorSubAgen'),
+            array('agen_subID, username, email, nama, hp, ktr_alamat_negaraID, ktr_alamat_propinsiID, ktr_alamat_kabupatenID, ktr_alamat_jalan, nama_kantor, kode, awalan_connote', 'required', 'on' => 'newKantorAgen'),
 
             array('roleID, new_password, ktr_alamat_kecamatanID, ktr_alamat_kelurahanID, koordinat_maps, telepon, fax, npwp, ktp, discount', 'safe'),
             //array('current_password, retype_new_password', 'required', 'on' => 'changePwd'),

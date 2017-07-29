@@ -9,7 +9,7 @@
     <li class="dropdown dropdown-user">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
             <img alt="" class="img-circle hide1" src=""/>
-            <span class="username username-hide-on-mobile">
+            <span class="username username-hide-on-mobile" style="color:#999999">
                 <i class="glyphicon glyphicon-user"></i> <?php echo Yii::app()->user->id; ?> 
             </span>
             <i class="fa fa-angle-down"></i>

@@ -1,20 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "transaksi_pickup".
+ * This is the model class for table "pengiriman_via".
  *
- * The followings are the available columns in table 'transaksi_pickup':
- * @property string $transaksiID
- * @property string $pickupID
+ * The followings are the available columns in table 'pengiriman_via':
+ * @property string $pengiriman_viaID
+ * @property string $nama
+ * @property integer $rp_rumus_pembagi
+ * @property integer $updated_at
+ * @property string $updated_by
  */
-class TransaksiPickup extends CActiveRecord
+class PengirimanVia extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'transaksi_pickup';
+		return 'pengiriman_via';
 	}
 
 	/**
@@ -25,11 +28,12 @@ class TransaksiPickup extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('transaksiID, pickupID', 'required'),
-			array('transaksiID, pickupID', 'length', 'max'=>50),
+			array('pengiriman_viaID, nama', 'required'),
+			array('rp_rumus_pembagi, updated_at', 'numerical', 'integerOnly'=>true),
+			array('pengiriman_viaID, nama, updated_by', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('transaksiID, pickupID', 'safe', 'on'=>'search'),
+			array('pengiriman_viaID, nama, rp_rumus_pembagi, updated_at, updated_by', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -50,8 +54,11 @@ class TransaksiPickup extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'transaksiID' => 'Transaksi',
-			'pickupID' => 'Pickup',
+			'pengiriman_viaID' => 'Pengiriman Via',
+			'nama' => 'Nama',
+			'rp_rumus_pembagi' => 'Rp Rumus Pembagi',
+			'updated_at' => 'Updated At',
+			'updated_by' => 'Updated By',
 		);
 	}
 
@@ -73,8 +80,11 @@ class TransaksiPickup extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('transaksiID',$this->transaksiID,true);
-		$criteria->compare('pickupID',$this->pickupID,true);
+		$criteria->compare('pengiriman_viaID',$this->pengiriman_viaID,true);
+		$criteria->compare('nama',$this->nama,true);
+		$criteria->compare('rp_rumus_pembagi',$this->rp_rumus_pembagi);
+		$criteria->compare('updated_at',$this->updated_at);
+		$criteria->compare('updated_by',$this->updated_by,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -85,7 +95,7 @@ class TransaksiPickup extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return TransaksiPickup the static model class
+	 * @return PengirimanVia the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
